@@ -1,0 +1,223 @@
+{
+    "entities": [
+        {
+            "name": "product",
+            "type": "CONSUMER_GOOD",
+            "metadata": {},
+            "salience": 0.3704655,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "product",
+                        "beginOffset": 22
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "dosage",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.22747453,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "dosage",
+                        "beginOffset": 95
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "CONTRAINDICATION",
+            "type": "OTHER",
+            "metadata": {
+                "wikipedia_url": "https://en.wikipedia.org/wiki/Contraindication",
+                "mid": "/m/02cr52"
+            },
+            "salience": 0.11460385,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "CONTRAINDICATION",
+                        "beginOffset": 0
+                    },
+                    "type": "PROPER"
+                }
+            ]
+        },
+        {
+            "name": "increase",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.07493734,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "increase",
+                        "beginOffset": 43
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "bowel movements",
+            "type": "EVENT",
+            "metadata": {},
+            "salience": 0.07493734,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "bowel\nmovements",
+                        "beginOffset": 67
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "nettle",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.02518505,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "nettle",
+                        "beginOffset": 140
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "Saw palmetto",
+            "type": "LOCATION",
+            "metadata": {},
+            "salience": 0.023129627,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "Saw palmetto",
+                        "beginOffset": 156
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "seal",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.017475361,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "seal",
+                        "beginOffset": 205
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "use",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.017475361,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "use",
+                        "beginOffset": 232
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "Pygeum",
+            "type": "ORGANIZATION",
+            "metadata": {
+                "mid": "/g/11f8mrxr4d"
+            },
+            "salience": 0.013730915,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "Pygeum",
+                        "beginOffset": 148
+                    },
+                    "type": "PROPER"
+                }
+            ]
+        },
+        {
+            "name": "Viscum",
+            "type": "OTHER",
+            "metadata": {
+                "mid": "/m/0d7wg4",
+                "wikipedia_url": "https://en.wikipedia.org/wiki/Viscum"
+            },
+            "salience": 0.013730915,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "Viscum",
+                        "beginOffset": 170
+                    },
+                    "type": "PROPER"
+                }
+            ]
+        },
+        {
+            "name": "effect",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.013356049,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "effect",
+                        "beginOffset": 266
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "album",
+            "type": "WORK_OF_ART",
+            "metadata": {},
+            "salience": 0.0076955087,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "album",
+                        "beginOffset": 177
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        },
+        {
+            "name": "CAUTION",
+            "type": "OTHER",
+            "metadata": {},
+            "salience": 0.0058026565,
+            "mentions": [
+                {
+                    "text": {
+                        "content": "CAUTION",
+                        "beginOffset": 183
+                    },
+                    "type": "COMMON"
+                }
+            ]
+        }
+    ],
+    "language": "en"
+}
