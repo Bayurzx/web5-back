@@ -1,15 +1,17 @@
 const express = require('express');
 const multer = require('multer');
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
+const keyFilename = './vision-ai.json';
+
 
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 // Multer configuration for handling file uploads
 const upload = multer({ dest: 'uploads/' });
 
 // Google Cloud Vision client
-const client = new ImageAnnotatorClient();
+const client = new ImageAnnotatorClient({ keyFilename });
 
 // Endpoint to handle image upload
 app.post('/upload', upload.single('image'), async (req, res) => {
@@ -32,6 +34,10 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.get('/', (req, res) => {
+  res.status(200).json(`Welcome 🚀🚀🎉🎇.`);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
