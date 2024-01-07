@@ -1,37 +1,15 @@
-const express = require('express');
-const multer = require('multer');
-const { ImageAnnotatorClient } = require('@google-cloud/vision');
+const sharp = require('sharp');
 
-const app = express();
-const port = 3000;
+// Input and output file paths
+const inputFile = 'sharp.jpg';
+const outputFile = 'output_compressed.jpg';
 
-// Multer configuration for handling file uploads
-const upload = multer({ dest: 'uploads/' });
+// Set the quality (0-100) for JPEG compression
+const quality = 80; // Adjust the quality as needed
 
-// Google Cloud Vision client
-const client = new ImageAnnotatorClient();
-
-// Endpoint to handle image upload
-app.post('/upload', upload.single('image'), async (req, res) => {
-  try {
-    // Path to the uploaded image
-    const filePath = req.file.path;
-
-    // Read the image file and send a request to Google Cloud Vision API
-    const [result] = await client.textDetection(filePath);
-    const detections = result.textAnnotations;
-
-    // Extracted text from the image
-    const extractedText = detections[0].description;
-
-    // Respond with the extracted text
-    res.json({ text: extractedText });
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ error: 'An error occurred' });
-  }
-});
-
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// Compress the image with specified quality
+sharp(inputFile)
+  .jpeg({ quality })
+  .toFile(outputFile)
+  .then(() => console.log('Image compressed successfully'))
+  .catch(err => console.error(err));
