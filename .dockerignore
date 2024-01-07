@@ -1,0 +1,9 @@
+# mine
+vision-ai.json
+uploads/
+*.jpg
+*.jfif
+delete.js
+test.js
+curl_test.sh
+history.sh

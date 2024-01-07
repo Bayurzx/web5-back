@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  food-checker:
+    build: .
+    ports:
+      - "3002:3002"  # Replace with desired port mappings if needed
+    env_file:
+      - .env
