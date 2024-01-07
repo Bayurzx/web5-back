@@ -6,6 +6,7 @@ uploads/
 delete.js
 test.js
 curl_test.sh
+history.sh
 
 # Logs
 logs

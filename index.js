@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
 const OpenAI = require("openai");
+const fs = require('fs').promises; // Import the File System module
+
 require("dotenv").config()
 
 const keyFilename = './vision-ai.json';
@@ -17,6 +19,8 @@ const client = new ImageAnnotatorClient({ keyFilename });
 
 // Endpoint to handle image upload
 app.post('/upload', upload.single('image'), async (req, res) => {
+  let filePath; // Declare filePath variable outside the try block
+
   try {
     const jsonData = req.body.json_data;
     console.log('Received JSON Data:', jsonData);
@@ -24,7 +28,7 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 
 
     // Path to the uploaded image
-    const filePath = req.file.path;
+    filePath = req.file.path;
 
     // Read the image file and send a request to Google Cloud Vision API
     const [result] = await client.textDetection(filePath);
@@ -40,6 +44,11 @@ app.post('/upload', upload.single('image'), async (req, res) => {
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'An error occurred' });
+  } finally {
+    // Delete the uploaded file regardless of success or failure
+    if (filePath) {
+      await deleteUploadedFile(filePath);
+    }
   }
 });
 
@@ -51,6 +60,15 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+
+const deleteUploadedFile = async (filePath) => {
+  try {
+    await fs.unlink(filePath); // Delete the file
+    console.log(`File: ${filePath} deleted successfully`);
+  } catch (err) {
+    console.error('Error deleting file:', err);
+  }
+};
 
 
 
