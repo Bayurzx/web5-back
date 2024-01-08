@@ -3,6 +3,7 @@ const multer = require('multer');
 const { ImageAnnotatorClient } = require('@google-cloud/vision');
 const OpenAI = require("openai");
 const fs = require('fs').promises; // Import the File System module
+const cors = require('cors');
 
 require("dotenv").config()
 
@@ -11,14 +12,22 @@ const keyFilename = './vision-ai.json';
 const app = express();
 const PORT = 3002;
 
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://foodcheck-ai.vercel.app', 'https://foodcheck-ai.netlify.app', 'https://foodcheck-ai-bayurzx-dev.apps.sandbox-m3.1530.p1.openshiftapps.com'],
+  methods: 'POST', // Specify allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+};
+
+app.use(cors(corsOptions));
+
 // Multer configuration for handling file uploads
 const upload = multer({ dest: 'uploads/' });
 
 // Google Cloud Vision client
 const client = new ImageAnnotatorClient({ keyFilename });
 
-// Endpoint to handle image upload
-app.post('/upload', upload.single('image'), async (req, res) => {
+// Endpoint to handle image_file upload
+app.post('/upload', upload.single('image_file'), async (req, res) => {
   let filePath; // Declare filePath variable outside the try block
 
   try {
@@ -27,14 +36,14 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     console.log('Received typeof JSON Data:', typeof jsonData);
 
 
-    // Path to the uploaded image
+    // Path to the uploaded image_file
     filePath = req.file.path;
 
-    // Read the image file and send a request to Google Cloud Vision API
+    // Read the image_file file and send a request to Google Cloud Vision API
     const [result] = await client.textDetection(filePath);
     const detections = result.textAnnotations;
 
-    // Extracted text from the image
+    // Extracted text from the image_file
     const extractedText = detections[0].description;
 
     const gptResponse = await gptText(extractedText, jsonData)
