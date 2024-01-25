@@ -1,14 +1,18 @@
 # Use a minimal base image like Alpine Linux
-FROM node:20.10.0-alpine
+FROM node:alpine
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
+# Set permissions for the logs directory
+RUN chgrp -R 0 /usr/src/app && \
+    chmod -R g=u /usr/src/app
+    
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --omit=dev
+RUN npm install
 
 # Copy the rest of the application files to the container
 COPY . .
